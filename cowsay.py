@@ -1,5 +1,7 @@
-import sys
 import functools
+import sys
+
+from dragon import Dragon
 from heifer_generator import HeiferGenerator
 
 
@@ -28,6 +30,9 @@ def main():
             if cow:
                 print(message)
                 print(cow.get_image())
+                if isinstance(cow, Dragon):
+                    can_breathe_fire = "can" if cow.can_breathe_fire() else "cannot"
+                    print(f"This dragon {can_breathe_fire} breathe fire.")
 
             else:
                 print("Could not find " + cow_name + " cow!")

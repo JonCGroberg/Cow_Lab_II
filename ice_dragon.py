@@ -1,20 +1,10 @@
-class IceDragon:
+from dragon import Dragon
+
+
+class IceDragon(Dragon):
     # init all variables to None
-    def __init__(self, name):
-        self.name = name
-        self.image = None
+    def __init__(self, name, image):
+        super().__init__(name, image)
 
-    # return Cow name
-
-    def get_name(self):
-        return self.name
-
-    # return Cow image
-
-    def get_image(self):
-        return self.image
-
-    # set Cow image
-
-    def set_image(self, image):
-        self.image = image
+    def can_breathe_fire(self):
+        return False
