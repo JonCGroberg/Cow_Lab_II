@@ -18,7 +18,9 @@ def main():
         # If the flag is 'l', list all available cows
         if arg1[1:] == 'l':
             cows = stringify_cows(HeiferGenerator.get_cows())
+            file_cows = stringify_cows(HeiferGenerator.get_file_cows())
             print("Cows available: " + cows)
+            print("File cows available: " + file_cows)
 
             # If the flag is 'n', generate a cow with a specific name and message
         elif arg1[1:] == 'n':
@@ -37,7 +39,16 @@ def main():
             else:
                 print("Could not find " + cow_name + " cow!")
         elif arg1[1:] == "f":
-            pass
+            cow_name = sys.argv[2]
+            message = concat(sys.argv[3:])
+            cow = find_file_cow(cow_name)
+
+            # If the cow is found, print the message and the image of the cow
+            if cow:
+                print(message)
+                print(cow.get_image())
+            else:
+                print("Could not find " + cow_name + " cow!")
 
     else:
         # print everything if one of the special commands is not found
@@ -62,6 +73,13 @@ def concat(list):
 # return the cow with name x if it exists, none otherwise
 def find_cow(name):
     for item in HeiferGenerator.get_cows():
+        if item.get_name() == name:
+            return item
+    return None
+
+
+def find_file_cow(name):
+    for item in HeiferGenerator.get_file_cows():
         if item.get_name() == name:
             return item
     return None
