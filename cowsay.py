@@ -36,6 +36,8 @@ def main():
 
             else:
                 print("Could not find " + cow_name + " cow!")
+        elif arg1[1:] == "f":
+            pass
 
     else:
         # print everything if one of the special commands is not found
