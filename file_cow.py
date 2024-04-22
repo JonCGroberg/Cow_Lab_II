@@ -2,5 +2,12 @@ from cow import Cow
 
 
 class FileCow(Cow):
-    def __init__(self):
-        pass
+    def __init__(self, name, filename):
+        super().__init__(name)
+        try:
+            self.image = open(filename, 'r')
+        except:
+            raise RuntimeError("MOOOOO!!!!!!")
+
+    def set_image(self, image):
+        raise RuntimeError("cannot rest FileCow Image")
